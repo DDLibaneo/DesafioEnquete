@@ -9,6 +9,10 @@ namespace DesafioEnquete.Models
 {
     public class ApplicationDbContext : DbContext
     {
+        public DbSet<Poll> Polls { get; set; }
+
+        public DbSet<Option> Options { get; set; }
+
         public ApplicationDbContext() : base("DefaultConnection") { }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
