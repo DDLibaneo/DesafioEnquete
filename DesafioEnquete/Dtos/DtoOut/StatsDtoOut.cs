@@ -7,6 +7,8 @@ namespace DesafioEnquete.Dtos.DtoOut
 {
     public class StatsDtoOut
     {
+        public int Views { get; set; }
 
+        public IEnumerable<OptionVoteDtoOut> Options { get; set; }
     }
 }
