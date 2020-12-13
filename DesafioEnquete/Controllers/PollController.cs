@@ -51,6 +51,8 @@ namespace DesafioEnquete.Controllers
             if (poll == null)
                 return NotFound();
 
+            RegisterVisualisation(poll);
+
             var pollDto = _mapper.Map<Poll, PollDtoOut>(poll);
 
             return pollDto;
@@ -71,30 +73,6 @@ namespace DesafioEnquete.Controllers
             var pollDtoOut = _mapper.Map<Poll, PollDtoOut>(poll);
 
             return CreatedAtAction("GetPoll", new { id = pollDtoOut.Id }, pollDtoOut);
-        }
-
-        // PUT: api/Poll/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePoll(int id, PollDtoIn pollDtoIn)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest();
-
-            var pollInDb = await _context.Polls.SingleOrDefaultAsync(p => p.Id == id);
-
-            if (pollInDb == null)
-                return NotFound();
-
-            _context.Polls.Remove(pollInDb);
-
-            var newPoll = _mapper.Map<PollDtoIn, Poll>(pollDtoIn);
-
-            _context.Polls.Add(newPoll);
-            await _context.SaveChangesAsync();
-
-            var pollDtoOut = _mapper.Map<Poll, PollDtoOut>(newPoll);
-
-            return Ok(pollDtoOut);
         }
 
         // DELETE: api/Poll/5
@@ -142,6 +120,12 @@ namespace DesafioEnquete.Controllers
             var statsDtoOut = _mapper.Map<Poll, StatsDtoOut>(poll);
 
             return Ok(statsDtoOut);
+        }
+
+        public async void RegisterVisualisation(Poll poll)
+        {
+            poll.Views++;
+            await _context.SaveChangesAsync();
         }
     }
 }
