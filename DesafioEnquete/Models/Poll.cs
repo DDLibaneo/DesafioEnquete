@@ -15,5 +15,7 @@ namespace DesafioEnquete.Models
         public string PollDescription { get; set; }
 
         public List<Option> Options { get; set; }
+
+        public int Views { get; set; }
     }
 }
