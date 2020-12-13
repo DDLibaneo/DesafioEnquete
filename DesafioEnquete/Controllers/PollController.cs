@@ -91,11 +91,11 @@ namespace DesafioEnquete.Controllers
         }
 
         // POST: api/Poll/Vote       
-        [HttpPost("Vote")]
-        public async Task<IActionResult> Vote(VoteDtoIn voteDtoIn)
+        [HttpPost("{id}/Vote")]
+        public async Task<IActionResult> Vote(int id)
         {
             var option = await _context.Options
-                .SingleOrDefaultAsync(o => o.Id == voteDtoIn.OptionId);
+                .SingleOrDefaultAsync(o => o.Id == id);
 
             if (option == null)
                 return NotFound();
@@ -103,7 +103,9 @@ namespace DesafioEnquete.Controllers
             option.Votes++;
             await _context.SaveChangesAsync();
 
-            return Ok();
+            var optionVoteDtoOut = _mapper.Map<Option, OptionDtoOut>(option);
+
+            return Ok(optionVoteDtoOut);
         }
 
         // GET: api/Poll/5/Stats
