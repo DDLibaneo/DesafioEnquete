@@ -132,7 +132,16 @@ namespace DesafioEnquete.Controllers
         [HttpGet("{id}/Stats")]
         public async Task<IActionResult> Stats(int id)
         {
-            throw new NotImplementedException();
+            var poll = await _context.Polls
+                .Include(p => p.Options)
+                .SingleOrDefaultAsync(p => p.Id == id);
+
+            if (poll == null)
+                return NotFound();
+
+            var statsDtoOut = _mapper.Map<Poll, StatsDtoOut>(poll);
+
+            return Ok(statsDtoOut);
         }
     }
 }

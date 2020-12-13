@@ -20,6 +20,8 @@ namespace DesafioEnquete.AutoMapper
             // Domain to DtoOut
             CreateMap<Poll, PollDtoOut>();
             CreateMap<Option, OptionDtoOut>();
+            CreateMap<Poll, StatsDtoOut>();
+            CreateMap<Option, OptionVoteDtoOut>();
         }
     }
 }
