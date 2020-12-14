@@ -25,14 +25,18 @@ Rode o projeto clicando no botão Run do Visual Studio. Você pode tambem gerar 
   * Método: GET
   * Url exemplo: https://localhost/api/Poll/5
   * Corpo json: Não tem.
+* GetPolls
+  * Método: GET
+  * Url exemplo: https://localhost:44383/api/Poll
+  * Corpo json: Não tem.
 * PostPoll
   * Método: POST
-  * Url exemplo: https://localhost:44383/api/Poll
+  * Url exemplo: https://localhost/api/Poll
   * Corpo json: 
   ```
   {
-  "PollDescription": "O que vc acha de Harry Potter?",
-  "Options": [
+    "PollDescription": "O que vc acha de Harry Potter?",
+    "Options": [
       {
           "OptionDescription": "Bom"
       },
@@ -47,6 +51,17 @@ Rode o projeto clicando no botão Run do Visual Studio. Você pode tambem gerar 
       }
     ]
   }
-  ```
-  
+  ```  
+* DeletePoll
+  * Método: Delete
+  * Url exemplo: https://localhost/api/Poll/4
+  * Corpo Json: Não tem   
+* Vote  
+  * Método: Post
+  * Url exemplo: https://localhost/api/Poll/1/Vote
+  * Corpo Json: Não tem. Para votar envie o id da Option na url. (No exemplo acima o Id é 1)
+* Stats
+  * Método: GET
+  * Url exemplo: https://localhost:44383/api/Poll/6/Stats
+  * Corpo Json: Não tem.
   
