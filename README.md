@@ -21,5 +21,32 @@ digite o comando `update-database`. Isso irá criar uma base de dados no Servido
 Rode o projeto clicando no botão Run do Visual Studio. Você pode tambem gerar um publish da API e subir no IIS por exemplo.
 
 ##### 5. Endpoints
-
-
+* GetPoll
+  * Método: GET
+  * Url exemplo: https://localhost/api/Poll/5
+  * Corpo json: Não tem.
+* PostPoll
+  * Método: POST
+  * Url exemplo: https://localhost:44383/api/Poll
+  * Corpo json: 
+  ```
+  {
+  "PollDescription": "O que vc acha de Harry Potter?",
+  "Options": [
+      {
+          "OptionDescription": "Bom"
+      },
+      {
+          "OptionDescription": "Show!"
+      },
+      {
+          "OptionDescription": "Ruim"
+      },
+      {
+          "OptionDescription": "Ruinzao"
+      }
+    ]
+  }
+  ```
+  
+  
