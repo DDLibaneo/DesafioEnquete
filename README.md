@@ -3,7 +3,7 @@ Desafio de desenvolver uma API para criar e usar enquetes.
 
 ### Ferramentas utilizadas
 Foi utilizado .NET Core para desenvolver este projeto e Enitity Framework para criar o banco de dados com migrações code-first. 
-O Banco de dados utilizado foi o SQL Server.
+O Banco de dados utilizado foi o SQL Server. A IDE utilizada foi o Visual Studio 2019.
 
 ### Passos para instalar/rodar o projeto
 ##### 1. Recuperar dependencias pelo Nuget
@@ -20,7 +20,7 @@ digite o comando `update-database`. Isso irá criar uma base de dados no Servido
 ##### 3. Rode o projeto
 Rode o projeto clicando no botão Run do Visual Studio. Você pode tambem gerar um publish da API e subir no IIS por exemplo.
 
-##### 5. Endpoints
+##### 4. Endpoints
 * GetPoll
   * Método: GET
   * Url exemplo: https://localhost/api/Poll/5
@@ -64,4 +64,71 @@ Rode o projeto clicando no botão Run do Visual Studio. Você pode tambem gerar 
   * Método: GET
   * Url exemplo: https://localhost/api/Poll/6/Stats
   * Corpo Json: Não tem.
+  
+  
+## English
+
+### Utilized Tools
+To develop this project, it was utilized .NET Core and Entity Framework Core to create the database with code-first migrations. The
+utilized database was Sql Server. The used IDE was Visual Studio 2019.
+
+### Steps to Install/Run the project 
+##### 1. Recover dependencies using Nuget
+Open the solution on Visual Studio 2019 and then open Nuget Package Manager Console. It will notify you that some packages are missing in the project 
+and will give you the option to download the dependencies.
+
+##### 2. Configure the Database
+I Recommend two alternatives to configure the database:
+
+- Running the ScriptDatabase.sql file (available on the root directory of the project) on a SqlServer database. Configure the appsetting.json 
+file to point to this new database.
+- Generate the database from Nuget Package Manager using Entity Framework Core migrations. To do this, type the `update-database` command in the Nuget Package Manager Console. This will create a new database in the local Server `(LocalDb)\MSSQLLocalDB`. 
+
+##### 3. Run the project
+Run the project by clicking on the Run button on Visual Studio. You can also generate a publish from the API and deploy it on IIS, for example.
+
+##### 4. Endpoints
+* GetPoll
+  * Method: GET
+  * Example URL: https://localhost/api/Poll/5
+  * json body: Does not apply.
+* GetPolls
+  * Method: GET
+  * Example URL: https://localhost/api/Poll
+  * json body: Does not apply.
+* PostPoll
+  * Method: POST
+  * Example URL: https://localhost/api/Poll
+  * json body: 
+  ```
+  {
+    "PollDescription": "What do you think of Harry Potter?",
+    "Options": [
+      {
+          "OptionDescription": "Good"
+      },
+      {
+          "OptionDescription": "Great!"
+      },
+      {
+          "OptionDescription": "Bad"
+      },
+      {
+          "OptionDescription": "Terrible"
+      }
+    ]
+  }
+  ```  
+* DeletePoll
+  * Method: Delete
+  * Example URL: https://localhost/api/Poll/4
+  * Json Body: Does not apply.
+* Vote  
+  * Método: Post
+  * Example Url: https://localhost/api/Poll/1/Vote
+  * Json Body: Does not apply. To vote send the option Id in the URL. (In this example the ID is 1)
+* Stats
+  * Method: GET
+  * Example Url: https://localhost/api/Poll/6/Stats
+  * Json Body: Does not apply.
   
